@@ -1,3 +1,4 @@
+
 import random
 '''
 Authors: Kaya Thomas and Ridwan Hassen
@@ -196,3 +197,4 @@ def dummy_start(clustersDict,filename):
 cmu, syll = readCmu("cmudict.0.7a.txt")
 clusters = clusters(cmu, syll)
 stateprod(clusters, "rhyming.fsa")
+dummy_start(cmu, "dummy_start.txt")
