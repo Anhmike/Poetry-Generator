@@ -6,18 +6,17 @@ This script creates a finite state
 acceptor that produces random sentences as it's output.
 '''
 
-'''
-This function produces an fsa
-that output random sentences.
-
-Parameters -- 
-writefile : a fsa file to write to
-
-readfile : a bigram file to read from
-'''
-
 
 def produceStates(writefile, readfile):
+	'''
+	This function produces an fsa
+	that output random sentences.
+
+	Parameters -- 
+	writefile : a fsa file to write to
+
+	readfile : a bigram file to read from
+	'''
 	file = open(readfile)
 	wfile = open(writefile, 'w')
 	states = ['0']

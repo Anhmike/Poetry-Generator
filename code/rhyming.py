@@ -7,22 +7,21 @@ This script creates a finite state
 acceptor that produces a ryhming poem as it's output.
 '''
 
-'''
-This function reads the cmu dictionary
-and returns the data.
-
-Parameters -- 
-filename : cmu read to read through
-
-Returns --
-cmuDict : dictionary with a word as its key
-and it's syllable as the value
-
-syll_list : a list of syllables 
-'''
-
 
 def readCmu(filename):
+	'''
+	This function reads the cmu dictionary
+	and returns the data.
+
+	Parameters -- 
+	filename : cmu read to read through
+
+	Returns --
+	cmuDict : dictionary with a word as its key
+	and it's syllable as the value
+
+	syll_list : a list of syllables 
+	'''
 	cmuDict = {}
 	syll_list = []
 	fileC = open(filename)
@@ -52,17 +51,17 @@ def readCmu(filename):
 	return cmuDict, syll_list
 
 
-'''
-This function counts the amount of
-vowels in a given string.
-
-Parameters -- 
-string : string we need vowel count for
-
-Returns --
-num_vowels : number of vowels in that string
-'''
 def countvowels(string):
+	'''
+	This function counts the amount of
+	vowels in a given string.
+
+	Parameters -- 
+	string : string we need vowel count for
+
+	Returns --
+	num_vowels : number of vowels in that string
+	'''
     num_vowels=0
 
     for char in string:
@@ -72,21 +71,21 @@ def countvowels(string):
     return num_vowels
 
 
-'''
-This function creates clusters of words
-that share the same syllables.
-
-Parameters -- 
-cmuDict : dictionary with a word as its key
-and it's syllable as the value
-
-syll_list : a list of syllables 
-
-Returns --
-shortClusters : a smaller dictionary with masculine
-syllables as it's key and list of words as the value
-'''
 def clusters(cmuDict, syllable_list):
+	'''
+	This function creates clusters of words
+	that share the same syllables.
+
+	Parameters -- 
+	cmuDict : dictionary with a word as its key
+	and it's syllable as the value
+
+	syll_list : a list of syllables 
+
+	Returns --
+	shortClusters : a smaller dictionary with masculine
+	syllables as it's key and list of words as the value
+	'''
 	clusters = {}
 	newClusters = {}
 	shortClusters = {}
@@ -119,16 +118,16 @@ def clusters(cmuDict, syllable_list):
 	return shortClusters
 
 
-'''
-This function produces the rhyming fsa.
-
-Parameters -- 
-clustersDict : a dictionary with syllables 
-as it's key and list of words as the value
-
-filename : bigram file to read from
-'''
 def stateprod(clustersDict, filename):
+	'''
+	This function produces the rhyming fsa.
+
+	Parameters -- 
+	clustersDict : a dictionary with syllables 
+	as it's key and list of words as the value
+
+	filename : bigram file to read from
+	'''
 	bigram_file = open('textonly.bigrams.arpa')
 	state_file = open(filename, 'w')
 	states = ["START"]
@@ -175,18 +174,17 @@ def stateprod(clustersDict, filename):
 	state_file.close()
 
 
-'''
-This function creates dummy start 
-states to use in the fsa.
-
-Parameters -- 
-clustersDict : a dictionary with syllables 
-as it's key and list of words as the value
-
-filename : bigram file to read from
-
-'''
 def dummy_start(clustersDict,filename):
+	'''
+	This function creates dummy start 
+	states to use in the fsa.
+
+	Parameters -- 
+	clustersDict : a dictionary with syllables 
+	as it's key and list of words as the value
+
+	filename : bigram file to read from
+	'''
 	wfile = open(filename, 'w')
 	for key in clustersDict:
 		syll = key.split(" ")
